@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+}
+
+/* static/css/faculty.css */
+#faculty{
+    margin: 100px 0px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin: 40px 0px;
+}
+
+.faculty-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+    gap: 40px;
+    justify-items: center;
+}
+
+.faculty-item {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #12838b, #d0eef3);
+    box-shadow: rgba(0, 0, 0, 0.56) 10px 20px 10px 4px;
+    color: #fff;
+}
+
+.faculty-info {
+    display: flex;
+    align-items: center;
+}
+
+.faculty-info img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    object-fit: cover;
+}
+
+.faculty-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.faculty-details p {
+    margin-bottom: 5px;
+    font-size: 19px;
+    color: #000;
+}
+
+.faculty-details strong {
+    margin-right: 15px;
+    font-size: 21px;
+}
+
+.profile-button {
+    align-self: flex-end;    
+    background: linear-gradient(45deg, #1625a8, #159fa8);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.9s ease;
+    font-weight: 500;
+    margin: 10px;
+    margin-left: 15px;
+}
+
+.profile-button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile-button:hover {
+    background-color: #12838b;
+    box-shadow: rgba(89, 90, 122, 0.56) 5px 8px 3px 1px;
+    transition: box-shadow 0.5s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .faculty-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .faculty-info img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .faculty-details {
+        align-items: center;
+    }
+
+    .profile-button {
+        margin-left: 33%;
+    }
+}
+
+@media (max-width: 480px) {
+    .faculty-info img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .faculty-details p {
+        text-align: center;
+    }
+
+    .profile-button {
+        margin-left: 25%;
+    }
+}

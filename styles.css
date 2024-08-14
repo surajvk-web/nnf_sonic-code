@@ -1,0 +1,488 @@
+/* static/css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #fff;
+
+    /* background: linear-gradient(45deg, #12838b, #d0eef3); */
+}
+
+
+
+
+
+
+
+
+.wrapper {
+    max-width: 100%;
+    position: relative;
+    display: flex;
+    margin: 80px 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper i {
+    top: 50%;
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+    position: absolute;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 46px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.wrapper i:first-child {
+    left: -23px;
+}
+
+.wrapper i:last-child {
+    right: -23px;
+}
+
+.carousel {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    font-size: 0;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    transition: scroll 2s ease-in-out; 
+}
+
+.carousel.dragging {
+    cursor: grab;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging img {
+    pointer-events: none;
+}
+
+.carousel img {
+    height: 340px;
+    object-fit: cover;
+    margin-left: 14px;
+    width: calc(100% / 3);
+}
+
+.carousel img:first-child {
+    margin-left: 0px;
+} 
+
+
+
+
+
+
+
+
+/* css for ABOUT US */
+.container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin: 100px 0;
+}
+
+.left-side {
+    opacity: 1;
+    margin-left: 300px;
+    width: 20%;
+    padding: 30px;
+    box-sizing: border-box;
+    transition: opacity 3s;
+}
+
+.left-side h2 {
+    transition: opacity 3s; /* Add transition for h2 opacity */
+}
+
+.right-side {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s;
+}
+
+.right-side img {
+    max-width: 500px;
+    height: fit-content;
+    transition: transform 3s;
+    box-shadow: rgba(0, 0, 0, 0.56) 10px 22px 70px 4px;
+}
+
+.right-side .text-content {
+    width: 50%;
+    display: none;
+    position: absolute;
+    right: 10%;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out 1 forwards 2s;
+}
+
+.container.hovered .left-side {
+    opacity: 0; /* Hide the left side */
+}
+
+.container.hovered .left-side h2 {
+    opacity: 0; /* Hide the h2 tag */
+}
+
+.container.hovered .right-side {
+    width: 100%;
+}
+
+.container.hovered .right-side img {
+    transform: translateX(-100%);
+    box-shadow: rgba(0, 0, 0, 0.56) 100px 5px 167px -48px;
+}
+
+.container.hovered .right-side .text-content {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* css for ABOUT US ends here */
+
+
+
+
+
+/* css fo CONTENT */
+.content {
+    margin: 100px 0;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 65px;
+    /* max-width: 1200px; */
+    width: 100%;
+}
+
+.box {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 40px 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.box:hover{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.sub-box {
+    padding: 10px;
+}
+
+.sub-box a{
+    text-decoration: none;
+    /* color: inherit; */
+}
+
+.image-box img {
+    max-width: 90%;
+    height: 150px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.heading-box h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.description-box p {
+    color: #666;
+}
+/* css for CONTENT ends here */
+
+
+
+
+
+
+
+
+/* css for quiz and everything_new */
+.quiz{
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    margin: 0;
+}
+
+.quiz-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+    width: 600px;
+    text-align: center;
+}
+
+.quiz-box:hover{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.quiz-box h2 {
+    margin-bottom: 20px;
+}
+
+.quiz-question {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+/* css for quiz code ends here */
+
+
+
+
+/*css code for everything_new  */
+.everything_new {
+    margin: 100px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 65px;
+    width: 100%;
+}
+
+.new_arrival, .new_links, .new_courses {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 40px 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.new_arrival:hover, .new_links:hover, .new_courses:hover {
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.new-box {
+    padding: 10px;
+}
+
+/* .image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+} */
+
+.heading-box h2 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.description-box p {
+    color: #666;
+}
+/* css for everything_new code ends here */
+
+
+    
+
+/* for BLOG POST */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.blog-post-container {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: 20px auto;  /* Centering the container */
+}
+
+.blog-post {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blog-post h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.blog-post p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.blog-post img {
+    height: auto;
+    width: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    /* border: 5px solid red; */
+    /* max-width: 50%; */
+    height: 250px;
+    width: 350px;
+    object-fit: contain;/*ya fill*/
+    margin-left: 14px;
+}
+
+.blog-post .date {
+    font-size: 18px;
+    font-weight:bold;
+    color: #888;
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.button {
+    background-color: #007BFF; /* Change to desired color */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Change to desired hover color */
+}
+
+/* for BLOG POST */
+
+
+
+
+footer {
+    background-color: #12838b;
+    /* background: linear-gradient(45deg, #169fa8, #159fa8); */
+
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Responsive Styles */
+@media screen and (max-width:900px) {
+    .carousel img {
+        width: calc(100% / 2);
+    }
+}
+
+
+
+@media (min-width: 600px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .photos {
+        flex: 3;
+    }
+
+    .new-arrivals {
+        flex: 1;
+        margin-left: 10px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+    }
+
+    .dropdown-content li a {
+        padding: 8px 12px;
+    }
+
+    /* for slider */
+    .carousel img {
+        width: 100%;
+    }
+
+}
