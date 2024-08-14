@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/video_lectures.css') }}">
+{% endblock %}
+{% block content %}
+<h1>Video Lectures</h1>
+{% for video in videos %}
+    <div>
+        <h2>{{ video.filename }}</h2>
+        <p>{{ video.description }}</p>
+        <a href="{{ url_for('view_video', video_id=video._id) }}">Watch Video</a>
+    </div>
+{% endfor %}
+{% endblock %}

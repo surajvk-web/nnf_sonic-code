@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #ddd;
+        }
+        .profile-header h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #333;
+        }
+        .profile-header p {
+            margin: 5px 0;
+        }
+        .edit-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .edit-link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            {% if user.profile_picture %}
+                <img src="{{ url_for('get_image', file_id=user.profile_picture) }}" alt="Profile Picture" width="120" height="120">
+            {% else %}
+                <img src="https://via.placeholder.com/120" alt="Placeholder Profile Picture" width="120" height="120">
+            {% endif %}
+            <div>
+                <h1>{{ user.username }}</h1>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Full Name:</strong> {{ user.full_name }}</p>
+                <p><strong>Bio:</strong> {{ user.bio }}</p>
+            </div>
+        </div>
+        <a href="{{ url_for('edit_profile', user_id=user._id) }}" class="edit-link">Edit Profile</a>
+        <a href="{{ url_for('register') }}" class="edit-link">New Student Registration</a>
+        <a href="{{ url_for('user_profile_list') }}" class="edit-link">User Profile List</a>
+    </div>
+</body>
+</html>

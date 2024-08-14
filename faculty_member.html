@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Faculty Member{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/faculty_member.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 style="text-align: center;">{{ member.name }}</h1>
+        
+        <div class="member-details">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                {% if member.image %}
+                    <!-- Inside faculty_member.html -->
+                    <img src="{{ image_url }}" alt="{{ member.name }}" />
+
+                {% else %}
+                    <img src="{{ url_for('static', filename='uploads/default_image.png') }}" alt="Default Image">
+                {% endif %}
+                <div>
+                    <!-- <p><strong>ID:</strong> {{ member.id }}</p> -->
+                    <!-- <p><strong>Name:</strong> {{ member.name }}</p> -->
+                    <p><strong>Current Affiliation:</strong> {{ member.current_affiliation }}</p>
+                    <p><strong>Designation:</strong> {{ member.designation }}</p>
+                    <p><strong>Expertise:</strong> {{ member.expertise }}</p>
+                    <p><strong>Research Areas:</strong>{{ member.research_areas }}</p>
+                    <p><strong>Extra Qualification:</strong> {{ member.extra_qualification }}</p>
+                    <p><strong>Contact:</strong> {{ member.contact }}</p>
+                    <p><strong>Google Link:</strong> <a href="{{ member.google_link }}" target="_blank">{{ member.google_link }}</a></p>
+                </div>
+            </div>
+        </div>
+        <button class="back-button">
+            <a href="{{ url_for('faculty') }}">Back to Faculty Members</a>
+        </button>
+    </div>
+{% endblock %}

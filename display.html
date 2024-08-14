@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Videos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/display.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Lectures</h1>
+        <div class="video-grid">
+            {% for video in videos %}
+            <div class="video-item">
+                <!-- <a href="{{ url_for('view_video', video_id=video._id) }}"> -->
+                <h2>{{ video.filename }}</h2>
+                <!-- </a> -->
+                <div class="video-container">
+                    <video width="100%" controls controlsList="nodownload">
+                        <source src="{{ url_for('get_video', video_id=video._id) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

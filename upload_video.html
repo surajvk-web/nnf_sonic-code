@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/upload_video.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="upload-h1">Upload Video</h1>
+    <form class="upload-video-form" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="video_name">Video Name:</label>
+            <input type="text" id="video_name" name="video_name" required>
+        </div>
+        <div>
+            <label for="video_description">Video Description:</label>
+            <textarea id="video_description" name="video_description"></textarea>
+        </div>
+        <div>
+            <label for="video">Choose video:</label>
+            <input type="file" id="video" name="video" accept="video/*" required>
+        </div>
+        <div>
+            <button type="submit" name="video_upload">Upload Video</button>
+        </div>
+    </form>
+    
+
+    <h1 class="upload-h1">Delete Video</h1>
+    <form class="upload-video-form" method="POST">
+        <div>
+            <label for="video_name_delete">Video Name:</label>
+            <input type="text" id="video_name_delete" name="video_name_delete" required>
+        </div>
+        <div>
+            <button type="submit" name="delete">Delete Video</button>
+        </div>
+    </form>
+
+    {% endblock %}

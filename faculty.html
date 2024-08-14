@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Faculty Member{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/faculty.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="faculty">
+    <h1>Faculty Members</h1>
+    <ul class="faculty-list">
+        {% for member in members %}
+        <li class="faculty-item">
+            <div class="faculty-info">
+                {% if member.image %}
+                    <!-- Debug URL -->
+                    <img src="{{ url_for('get_faculty_image', file_id=member.image) }}" alt="Faculty Image">
+                {% else %}
+                    <img src="{{ url_for('static', filename='uploads/default_image.png') }}" alt="Default Image">
+                {% endif %}
+
+                <div class="faculty-details">
+                    <p><strong>Name:</strong> {{ member.name }}</p>
+                    <p><strong>Current Affiliation:</strong> {{ member.current_affiliation }}</p>
+                    <p><strong>Designation:</strong> {{ member.designation }}</p>
+                </div>
+                <button class="profile-button">
+                    <a href="{{ url_for('faculty_member', member_id=member['_id']) }}">See Full Profile</a>
+                </button>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Add New Faculty Member{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/add_member.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="add-member-page">
+    <h1>Add New Faculty Member</h1>
+    <form action="{{ url_for('add_faculty_member') }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="current_affiliation">Current Affiliation:</label>
+            <input type="text" id="current_affiliation" name="current_affiliation" required>
+        </div>
+        <div class="form-group">
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation" name="designation" required>
+        </div>
+        <div class="form-group">
+            <label for="expertise">Expertise:</label>
+            <input type="text" id="expertise" name="expertise" required>
+        </div>
+        <div class="form-group">
+            <label for="research_areas">Research Areas:</label>
+            <textarea id="research_areas" name="research_areas" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="extra_qualification">Extra Qualification:</label>
+            <input type="text" id="extra_qualification" name="extra_qualification">
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" required>
+        </div>
+        <div class="form-group">
+            <label for="google_link">Google Link:</label>
+            <input type="url" id="google_link" name="google_link" placeholder="https://example.com">
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image">
+        </div>
+        <button type="submit">Add Member</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Questions</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 8px; box-sizing: border-box; }
+        .form-group button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; margin-right: 10px; }
+        .form-group button.add-question { background-color: #28a745; }
+        .navigation-buttons { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Questions</h2>
+        <form id="questionsForm">
+            <div class="form-group">
+                <label for="quiz_heading">Quiz Heading:</label>
+                <input type="text" id="quiz_heading" name="quiz_heading" required>
+            </div>
+            <div id="questionsContainer">
+                <!-- Questions will be dynamically added here -->
+            </div>
+            <div class="form-group">
+                <button type="button" class="add-question" onclick="addQuestion()">Add Another Question</button>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit All Questions</button>
+            </div>
+        </form>
+        <div class="navigation-buttons">
+            <button onclick="window.location.href='/quiz_list'">Go to Quiz</button>
+            <button onclick="window.location.href='/result'">Result</button>
+
+            <!-- <button onclick="window.location.href='/add_questions'">Add More Questions</button>
+            <button onclick="window.location.href='/'">Home</button> -->
+        </div>
+    </div>
+    <script>
+        let questionCount = 0;
+
+        function addQuestion() {
+            questionCount++;
+            const questionTemplate = `
+                <div class="form-group">
+                    <label for="question${questionCount}">Question ${questionCount}:</label>
+                    <textarea id="question${questionCount}" name="question${questionCount}" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="option1_${questionCount}">Option 1:</label>
+                    <input type="text" id="option1_${questionCount}" name="option1_${questionCount}" required>
+                </div>
+                <div class="form-group">
+                    <label for="option2_${questionCount}">Option 2:</label>
+                    <input type="text" id="option2_${questionCount}" name="option2_${questionCount}" required>
+                </div>
+                <div class="form-group">
+                    <label for="option3_${questionCount}">Option 3:</label>
+                    <input type="text" id="option3_${questionCount}" name="option3_${questionCount}" required>
+                </div>
+                <div class="form-group">
+                    <label for="option4_${questionCount}">Option 4:</label>
+                    <input type="text" id="option4_${questionCount}" name="option4_${questionCount}" required>
+                </div>
+                <div class="form-group">
+                    <label for="correct_option_${questionCount}">Correct Option:</label>
+                    <div>
+                        <input type="radio" id="correct_option1_${questionCount}" name="correct_option_${questionCount}" value="0" required>
+                        <label for="correct_option1_${questionCount}">Option 1</label><br>
+                        <input type="radio" id="correct_option2_${questionCount}" name="correct_option_${questionCount}" value="1">
+                        <label for="correct_option2_${questionCount}">Option 2</label><br>
+                        <input type="radio" id="correct_option3_${questionCount}" name="correct_option_${questionCount}" value="2">
+                        <label for="correct_option3_${questionCount}">Option 3</label><br>
+                        <input type="radio" id="correct_option4_${questionCount}" name="correct_option_${questionCount}" value="3">
+                        <label for="correct_option4_${questionCount}">Option 4</label>
+                    </div>
+                </div>
+                <hr>`;
+            document.getElementById('questionsContainer').insertAdjacentHTML('beforeend', questionTemplate);
+        }
+
+        document.getElementById('questionsForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const quizHeading = document.getElementById('quiz_heading').value;
+            const questions = [];
+            for (let i = 1; i <= questionCount; i++) {
+                const question = document.getElementById(`question${i}`).value;
+                const option1 = document.getElementById(`option1_${i}`).value;
+                const option2 = document.getElementById(`option2_${i}`).value;
+                const option3 = document.getElementById(`option3_${i}`).value;
+                const option4 = document.getElementById(`option4_${i}`).value;
+                const correct_option = document.querySelector(`input[name="correct_option_${i}"]:checked`).value;
+                
+                questions.push({
+                    question: question,
+                    options: [option1, option2, option3, option4],
+                    correct_option: correct_option
+                });
+            }
+
+            const response = await fetch('/add_questions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ quiz_heading: quizHeading, questions: questions })
+            });
+            if (response.ok) {
+                alert('Questions added successfully!');
+                document.getElementById('questionsForm').reset();
+                document.getElementById('questionsContainer').innerHTML = '';
+                questionCount = 0;
+            } else {
+                alert('Failed to add questions.');
+            }
+        });
+
+        // Add the first question form on page load
+        addQuestion();
+    </script>
+</body>
+</html>

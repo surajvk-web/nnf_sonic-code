@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - National Neonatology Forum</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_page.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('upload') }}">Upload Blog</a></li>
+                    <!-- <li><a href="{{ url_for('blogs') }}">Manage Blogs</a></li> -->
+                    <li><a href="{{ url_for('user_profile_list') }}">user_profile_list</a></li>
+                    <!-- <li><a href="{{ url_for('blogs') }}">Manage Blogs</a></li> -->
+                    <!-- <li><a href="{{ url_for('blogs') }}">Manage Blogs</a></li> -->
+
+                    <li><a href="{{ url_for('upload_video') }}">Upload Video</a></li>
+                    <li><a href="{{ url_for('add_faculty_member') }}">Add faculty members</a></li>
+                    <li><a href="{{ url_for('admin_register') }}">Admin registration</a></li>
+                    <li><a href="{{ url_for('register') }}">User Registration</a></li>
+
+                    <li><a href="{{ url_for('admin_logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div id="flash-messages">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <section class="welcome">
+            <h2>Welcome, {{ session.get('admin_username') }}</h2>
+            <p>Use the navigation bar to manage content and settings.</p>
+        </section>
+
+        <section class="admin-actions">
+            <!-- <h3>Actions</h3> -->
+            <!-- <div class="action-buttons">
+                <a href="{{ url_for('upload') }}" class="btn">Upload New Blog Post</a>
+                <a href="{{ url_for('blogs') }}" class="btn">View/Edit Blog Posts</a> -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 National Neonatology Forum. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
