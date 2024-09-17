@@ -1,1 +1,249 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Neonatology Forum</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- FontAwesome CDN link for icons -->
+
+</head>
+
+<body>
+    {% extends "base.html" %}
+
+{% block title %}National Neonatology Forum{% endblock %}
+
+{% block content %}    
+
+    <!-- slider -->
+    <div class="wrapper">
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <div class="carousel">
+            <!-- <img src="image1.jpg" alt="image1" draggable="false"> -->
+            <video width="620" height="340" controls autoplay loop muted>
+                <source src="{{ url_for('static', filename='slider_content/Media1.mp4') }}" type="video/mp4">
+            </video>
+
+            <img src="{{ url_for('static', filename='slider_content/PDA_PW_doppler_1.bmp') }}" alt="image1"
+                draggable="false">
+
+            <video width="620" height="340" controls autoplay loop muted>
+                <source src="{{ url_for('static', filename='slider_content/Media2.mp4') }}" type="video/mp4">
+            </video>
+
+            <img src="{{ url_for('static', filename='slider_content/pda_poce_illustrations.jpg') }}" alt="image1"
+                draggable="false">
+
+            <video width="620" height="340" controls autoplay loop muted>
+                <source src="{{ url_for('static', filename='slider_content/Media3.mp4') }}" type="video/mp4">
+            </video>
+
+            <img src="{{ url_for('static', filename='slider_content/Picture2.png') }}" alt="image1" draggable="false">
+
+            <video width="620" height="340" controls autoplay loop muted>
+                <source src="{{ url_for('static', filename='slider_content/Media4.mp4') }}" type="video/mp4">
+            </video>
+
+            <img src="{{ url_for('static', filename='slider_content/Picture4.jpg') }}" alt="image1" draggable="false">
+
+            <video width="620" height="340" controls autoplay loop muted>
+                <source src="{{ url_for('static', filename='slider_content/Media5.mp4') }}" type="video/mp4">
+            </video>
+
+            <img src="{{ url_for('static', filename='images/Screenshot1.png') }}" alt="image1" draggable="false">
+
+        </div>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+    </div>
+
+
+    <!-- About us -->
+    <div class="container">
+        <div class="left-side">
+            <h1>About Us</h1>
+        </div>
+        <div class="right-side">
+            <!-- <img src="about.jpg" alt="Image"> -->
+            <!-- <img src="{{ url_for('static', filename='images/about.jpg') }}" alt="image1" draggable="false"> -->
+            <img src="{{ url_for('static', filename='images/about_us_image.webp') }}" alt="image1" draggable="false">
+            <div class="text-content">
+                <h2>About Us</h2>
+                <p>The National Neonatology Forum - SONIC (Sonography for Optimizing Neonatal Intensive Care) focuses on enhancing neonatal care through advanced sonography techniques. This initiative aims to improve diagnostic accuracy and treatment outcomes for critically ill newborns by integrating state-of-the-art imaging technologies into neonatal intensive care practices. By leveraging ultrasound innovations, SONIC enhances the ability of healthcare providers to monitor and manage complex conditions in neonates, ultimately aiming to optimize care and improve survival rates in this vulnerable population.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- about us ends here -->
+
+
+    <!-- html code for CONTENT starts here -->
+    <div class="content">
+        <div class="box">
+            <div class="sub-box image-box">
+                <!-- <img src="image1.jpg" alt="Video Lecture Image"> -->
+                <img src="{{ url_for('static', filename='images/video_lecture2.jfif') }}" alt="image1" draggable="false">
+            </div>
+
+            <div class="sub-box heading-box">
+                <h2>
+                    <a href="{{ url_for('video_lectures') }}">Video Lectures</a></h2>
+            </div>
+
+            <div class="sub-box description-box">
+                <p>Video Lectures access are only being given to the registered members of Batch-1.</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="sub-box image-box">
+                <img src="{{ url_for('static', filename='images/image3.jpg') }}" alt="image3" draggable="false">
+            </div>
+
+            <div class="sub-box heading-box">
+                <h2>Notes</h2>
+            </div>
+            <div class="sub-box description-box">
+                <p>We're working on this. Stay tuned for updates!</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="sub-box image-box">
+                <img src="{{ url_for('static', filename='images/image3.jpg') }}" alt="image3" draggable="false">
+            </div>
+            <div class="sub-box heading-box">
+                <h2>Research Papers</h2>
+            </div>
+            <div class="sub-box description-box">
+                <p>We're working on this. Stay tuned for updates!</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="sub-box image-box">
+                <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt="image1" draggable="false">
+            </div>
+            <div class="sub-box heading-box">
+                <h2>Mock Test</h2>
+            </div>
+            <div class="sub-box description-box">
+                <p>We're working on this. Stay tuned for updates!</p>
+            </div>
+        </div>
+    </div>
+    <!-- html code for CONTENT ends here -->
+
+
+    <!-- quiz codes -->
+    <!-- <div class="quiz">
+        <div class="quiz-box">
+            <h2>Daily Quiz</h2>
+            <form id="quiz-form">
+                <div class="quiz-question">
+                    <p>What is the capital of France?</p>
+                    <label>
+                        <input type="radio" name="question1" value="a">
+                        A. London
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question1" value="b">
+                        B. Berlin
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question1" value="c">
+                        C. Paris
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question1" value="d">
+                        D. Madrid
+                    </label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="submission-message" class="hidden">
+                <p>Thank you for attempting the quiz!</p>
+            </div>
+        </div>
+    </div> -->
+
+
+    <!-- <div class="everything_new"> -->
+        <!-- <p>new arrivals </p> -->
+        <!-- <div class="new_arrival">
+            <div class="new image-box"> -->
+                <!-- <img src="image1.jpg" alt="Video Lecture Image"> -->
+                <!-- <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt="image1" draggable="false">
+            </div>
+            <div class="new-box heading-box">
+                <h2>New Arrivals</h2>
+            </div>
+            <div class="new-box description-box">
+                <p>Details about new arrival contents go here.</p>
+            </div>
+        </div>
+        <div class="new_links">
+            <div class="new image-box">
+                <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt="image1" draggable="false">
+            </div>
+            <div class="new-box heading-box">
+                <h2>New Links</h2>
+            </div>
+            <div class="new-box description-box">
+                <p>Details about new research go here.</p>
+            </div>
+        </div>
+        <div class="new_courses">
+            <div class="new image-box"> -->
+                <!-- <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt="image1" draggable="false">
+            </div>
+            <div class="new-box heading-box">
+                <h2>New Videos/Cources</h2>
+            </div>
+            <div class="new-box description-box">
+                <p>Details about new video lecture or courses go here.</p>
+            </div>
+        </div>
+    </div> -->
+    <!-- quiz and everything_new code ends here -->
+
+
+
+    <!-- Blog Post Container -->
+    <main>
+        <!-- Blog Post Container -->
+        <div class="blog-post-container">
+            {% if latest_blog %}
+                <div class="blog-post">
+                    <!-- <h1>Today's Blog <span class="date">{{ latest_blog.date.strftime('%B %d, %Y') }}</span></h1> -->
+                    <h1>Today's Blog</h1>
+                    <h2>{{ latest_blog.title }}</h2>
+                    {% if latest_blog.image_path %}
+                        <!-- Debug: Print the image path -->
+                        <!-- <script>console.log("Image Path: {{ latest_blog.image_path }}");</script> -->
+                        <img src="{{ url_for('static', filename=latest_blog.image_path.split('static/', 1)[-1]) }}" alt="Blog Image">
+                    {% endif %}
+                    <p>{{ latest_blog.content }}</p>
+                </div>
+            {% else %}
+                <p>No blog posts available.</p>
+            {% endif %}
+            <div class="button-container">
+                <!-- <a href="{{ url_for('upload') }}" class="button">Upload Blog</a> -->
+                <a href="{{ url_for('blogs') }}" class="button">View All Blogs</a>
+            </div>
+        </div>
+        <!-- Blog Post Container ends here -->
+    </main>
+    <!-- Blog Post Container ends here -->
+    <!-- Blog Upload and View Buttons -->
+    <!-- Blog Buttons end here -->
+
+
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    {% endblock %}
+</body>
+</html>
